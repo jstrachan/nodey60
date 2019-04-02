@@ -8,7 +8,7 @@ image:
   pullPolicy: IfNotPresent
 
 # enable this flag to use knative serve to deploy the app
-knativeDeploy: false
+knativeDeploy: true
 service:
   name: nodey60
   type: ClusterIP
