@@ -1,0 +1,17 @@
+{{- if .Values.knativeDeploy }}
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: {{ template "fullname" . }}
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+             imagePullPolicy: {{ .Values.image.pullPolicy }}
+            env:
+              - name: TARGET
+                value: "Go Sample v1"
+{{- end }}
